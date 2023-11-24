@@ -1,0 +1,27 @@
+<div class="container-fluid mt-5">
+    <div class="container mb-5 row mt-5 ">
+        <img src="../../../assets/images/griffith-berserk-rebirth_1600x900.jpg"
+         class="img-fluid"  style="width: 40%" alt="image">
+        <h1 class="text-body-secondary col d-flex " 
+        style="font-size: 5rem;align-items: flex-end;justify-content: left;"
+        >{{album.name}}</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Views</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let song of album.songs;let i=index" >
+            <th scope="row">{{i+1}}</th>
+            <td>{{song.views}}</td>
+            <td>{{song.duration}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+

@@ -1,0 +1,18 @@
+<div class="container-fluid row justify-content-center ">
+    <form (submit)="submitAlbum()" class="col-3 ">
+        <div class="mb-3">
+            <label for="name" class="form-label">Album's name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="album.name" name="name" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="views" class="form-label">Album's views</label>
+            <input type="text" class="form-control" id="views" [(ngModel)]="album.views" name="views" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Album's image</label>
+            <input type="file" class="form-control" id="image" (change)="onSelectedFile($event)" aria-describedby="emailHelp">
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+</div>
