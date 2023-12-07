@@ -1,18 +1,38 @@
-<div class="container-fluid row justify-content-center ">
+<div class="container-fluid d-flex m-1 p-5 ">
     <form (submit)="submitAlbum()" class="col-3 ">
         <div class="mb-3">
             <label for="name" class="form-label">Album's name</label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="album.name" name="name" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="name" [(ngModel)]="album.name" name="name" required>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="views" class="form-label">Album's views</label>
-            <input type="text" class="form-control" id="views" [(ngModel)]="album.views" name="views" aria-describedby="emailHelp">
-          </div>
+            <input type="number" class="form-control" id="views" [(ngModel)]="album.views" name="views" required>
+          </div> -->
           <div class="mb-3">
             <label for="image" class="form-label">Album's image</label>
-            <input type="file" class="form-control" id="image" (change)="onSelectedFile($event)" aria-describedby="emailHelp">
+            <input type="file" class="form-control" id="image" accept="image/*" (change)="onSelectedFile($event)" required >
           </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <div class="mb-3">
+            <ul class="form-label">
+              <li *ngFor="let song of album.songs" >
+                {{removeExtension(song.name)}}
+              </li>
+            </ul>
+          </div> -->
+          <!-- <app-song-form *ngIf=" !!album.name && !!album.views" (songEmitter)="receiveSong($event)" ></app-song-form> -->
+          <app-song-form *ngIf=" !!album.name && album.image" (songEmitter)="receiveSong($event)" ></app-song-form>
+
+        <button type="submit" class="btn btn-primary" >Create</button>
       </form>
+    <div class="container">
+      <div class="card" style="width: 50%; ">
+        <img [src]="imagePreviewSource"  class="card-img-top" style="width: 100%;"  alt="Image's Preview"
+        
+        >
+        <div class="card-body">
+          <h5  *ngFor="let song of album.songs;let i=index" class="card-title">{{i+1}} {{removeExtension(song.name)}}</h5>
+        </div>
+      </div>
+    </div>
     
 </div>

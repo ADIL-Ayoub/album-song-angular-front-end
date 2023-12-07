@@ -1,23 +1,57 @@
-<div  class="container-fluid text-center " >
-    <h3 *ngIf="albums.length<1" class="text-center" >
-      <small class="text-body-secondary m-5">No albums</small>
-    </h3>
-    <button routerLink="/albums/form" type="button" class="btn btn-primary col-1 ms-4 mt-4">Add +</button> 
-</div>
-
-<div  class="container-fluid row" >
-    <div *ngFor="let album of albums" class="card m-4" style="width: 20%"  >
-        <img src="../../../assets/images/griffith-berserk-rebirth_1600x900.jpg" class="card-img-top" alt="image">
-        <div class="card-body">
-          <h5 class="card-title">{{album.name}}</h5>
-          </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{album.views}} view</li>
-        </ul>
-        <div class="card-body justify-content-center ">
-          <a [routerLink]="['/albums',album.id]" class="card-link btn btn-primary ">Explore</a>
-          <button (click)="deleteAlbum(album.id)" class="btn btn-danger mx-3">Remove</button>
-        </div>
+  <div  class="container-fluid row text-center d-flex justify-content-center"  >
+    <div class="m-3" >
+      <fa-icon  routerLink="/albums/form"
+           [icon]="plusIcon" class="me-2 fa-2xl "></fa-icon> 
+           <fa-icon  routerLink="/albums/form"
+           [icon]="albumIcon" class="me-2 fa-2xl "></fa-icon> 
+    </div>
+    <div class="container m-4 ">
+      <input (ngModelChange) ="search()" [(ngModel)]="filterName"
+       name="filterName" type="text" class="search text-center "
+         placeholder="Search for albums...">       
+    </div>  
+    <div >
+      <h3 *ngIf="albums.length<1 && !isLoading" class="text-center" >
+        <h1 class="text-body-secondary p-2" style="font-size: 100%;margin: 10%;">
+          No albums...
+        </h1>
+      </h3>
+    </div>     
+  </div>
+  
+  <div class="container-fluid" style="">
+    <!-- loading screen -->
+    <div *ngIf="isLoading" class="row">
+     <div *ngFor="let _ of repeat" class="card m-3" style="width: 20%;" aria-hidden="true">
+      <img src="../../../assets/images/gray-color-solid-background-1920x1080.png" class="card-img-top" alt="loading...">
+      <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+          <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+          <span class="placeholder col-7"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-6"></span>
+          <span class="placeholder col-8"></span>
+        </p>
+        <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
       </div>
+    </div>
+  </div>
+  <div  class="container-fluid row d-flex justify-content-center" *ngIf="!isLoading"  >
+      <div *ngFor="let album of albums" [routerLink]="['/albums',album.id]" class="card m-4" style="width: 20%;background-image: url(../../../assets/images/music.png);"  >
+          <img [src]= "album.image" class="card-img-top" style="width: 100%; height: 100%; " alt="image">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{album.name}}</h5>
+          </div>
+          <!-- <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{album.views}} view</li>
+          </ul> -->
+          <div class="card-body text-center">
+            <fa-icon [icon]="deleteIcon" (click)="deleteAlbum($event,album.id)" class="btn btn-danger mx-3" ></fa-icon>
+            <!-- <button  class="btn btn-danger mx-3">Remove</button> -->
+          </div>
+        </div>
+  </div>
 </div>
-

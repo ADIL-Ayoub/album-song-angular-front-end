@@ -10,8 +10,12 @@ import { AlbumService } from './services/album/album.service';
 import { AlbumFormComponent } from './components/album-form/album-form.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SongComponent } from './components/song/song.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
+import { SongFormComponent } from './components/song-form/song-form.component';
+import { SongService } from './services/song/song.service';
+import { SongsComponent } from './components/songs/songs.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,17 +23,20 @@ import { AlbumDetailsComponent } from './components/album-details/album-details.
     AlbumsComponent,
     HeaderComponent,
     AlbumFormComponent,
-    SongComponent,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    SongFormComponent,
+    SongsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ],
-  providers: [AlbumService],
+  providers: [AlbumService,SongService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 import { AlbumFormComponent } from './components/album-form/album-form.component';
 import { AlbumsComponent } from './components/albums/albums.component';
+import { SongsComponent } from './components/songs/songs.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   {
     path:"albums/:id",
     component:AlbumDetailsComponent 
+  },
+  {path:"songs" ,
+  component: SongsComponent
   }
    
 ];

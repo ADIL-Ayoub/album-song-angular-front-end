@@ -4,5 +4,6 @@ export interface Album{
     id:number;
     name: string;
     views:number;
-    songs:Song[] | null;
+    image:any;
+    songs:any;
 }

@@ -1,0 +1,11 @@
+<div class="container-fluid row justify-content-center ">
+    <!-- <form (submit)="addSong()" class="my-4"> -->
+      <form (submit)="addRealSong()" class="form-control my-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Song's File</label>
+        <input type="file" class="form-control" id="name" accept=".mp3"  name="name" (change)="onSelectedFile($event)"  required>
+      </div>
+        <button type="submit" class="btn btn-dark" >Add</button>
+      </form>
+    
+</div>

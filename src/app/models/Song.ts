@@ -2,6 +2,9 @@ export interface Song{
     id:number
     name:string,
     views: number,
-    duration:string,    
+    path:string,
+    type:string,
+    duration:string,  
+    albumId:number  
 
 }

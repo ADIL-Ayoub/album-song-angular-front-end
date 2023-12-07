@@ -14,13 +14,21 @@ export class AlbumService {
   getAlbums():Observable<Album[]>{
     return this.http.get<Album[]>(this.baseURL);
   }
-  addAlbum(album:Album){
-    return this.http.post(this.baseURL,album);
+  addAlbum(album:Album):Observable<Album>{
+    const formData:FormData= new FormData();
+    formData.append('name',album.name);
+    formData.append('views',album.views.toString());
+    formData.append('image',album.image);
+    
+    return this.http.post<Album>(this.baseURL,formData);
   }
   deleteAlbum(id:number):Observable<any>{
     return this.http.delete(`${this.baseURL}/${id}`);
   }
   getAlbum(id:number):Observable<Album>{
     return this.http.get<Album>(`${this.baseURL}/with-songs/${id}`);
+  }
+  getAlbumsByFilter(filterName:string):Observable<Album[]>{
+    return this.http.get<Album[]>(`${this.baseURL}/filter?filterName=${filterName}`);
   }
 }
