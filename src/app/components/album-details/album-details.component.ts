@@ -52,13 +52,20 @@ export class AlbumDetailsComponent {
     this.path="../../../assets/music/"+ this.cleanPath(path);
     this.cdr.detectChanges();
     this.isPathChanging=false;
-    console.log(this.path);
+    //console.log(this.path);
   }
   cleanPath(path:string):string{
-   const newPath=path.slice(58);
-   const index=newPath.indexOf('\\');
-  return newPath.slice(0,index)+'/'+newPath.slice(index+1);
-  }
+    const temp= path.split("\\");
+    const buffPath=temp.at(temp.length-2) + "/"+temp.at(temp.length-1);
+    return buffPath;
+   //const newPath=path.slice(58);
+   //const index=newPath.indexOf('\\');
+   //console.log(buffPath);
+   //console.log(newPath.slice(0,index)+'/'+newPath.slice(index+1)); 
+//   return newPath.slice(0,index)+'/'+newPath.slice(index+1);
+  
+    
+}
   removeExtension(songName:string):string{
     const index=songName.lastIndexOf(".");
     return index!=-1? songName.slice(0,index):songName;

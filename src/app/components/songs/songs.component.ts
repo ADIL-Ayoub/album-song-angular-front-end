@@ -34,9 +34,12 @@ export class SongsComponent {
     console.log(this.path);
   }
   cleanPath(path:string):string{
-    const newPath=path.slice(58);
-    const index=newPath.indexOf('\\');
-   return newPath.slice(0,index)+'/'+newPath.slice(index+1);
+    const temp= path.split("\\");
+    const buffPath=temp.at(temp.length-2) + "/"+temp.at(temp.length-1);
+    return buffPath;
+   // const newPath=path.slice(58);
+  //   const index=newPath.indexOf('\\');
+  //  return newPath.slice(0,index)+'/'+newPath.slice(index+1);
    }
    removeExtension(songName:string):string{
     const index=songName.lastIndexOf(".");

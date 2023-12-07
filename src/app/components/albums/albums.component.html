@@ -19,7 +19,7 @@
     </div>     
   </div>
   
-  <div class="container-fluid" style="">
+  <div class="container-fluid">
     <!-- loading screen -->
     <div *ngIf="isLoading" class="row">
      <div *ngFor="let _ of repeat" class="card m-3" style="width: 20%;" aria-hidden="true">
@@ -40,7 +40,8 @@
     </div>
   </div>
   <div  class="container-fluid row d-flex justify-content-center" *ngIf="!isLoading"  >
-      <div *ngFor="let album of albums" [routerLink]="['/albums',album.id]" class="card m-4" style="width: 20%;background-image: url(../../../assets/images/music.png);"  >
+      <div *ngFor="let album of albums" [routerLink]="['/albums',album.id]" class="card m-4"
+        style="width: 20%;background-image: url(../../../assets/images/music.png);"  >
           <img [src]= "album.image" class="card-img-top" style="width: 100%; height: 100%; " alt="image">
           <div class="card-body text-center">
             <h5 class="card-title">{{album.name}}</h5>
